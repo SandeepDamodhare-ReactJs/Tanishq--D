@@ -1,0 +1,6 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Optional: Adds some space between images */
+  justify-items: center; /* Centers images within their grid cells */
+}
