@@ -24,6 +24,7 @@ import Footer from './components/Footer';
 
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
+import Profile from './components/Profile';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           {/* <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} /> */}
           <Route path="/team" element={<PrivateRoute><Team/></PrivateRoute>} />
