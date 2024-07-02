@@ -47,13 +47,13 @@ const Footer = () => {
           <h4 class="text-lg font-semibold mb-6 text-white">Contact Us</h4>
           <ul class="space-y-4">
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Email</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Email:- sdamodhare5@gmail.com</a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Phone</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Phone:- 9766881040</a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Address</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Address:- Amravati</a>
             </li>
           </ul>
         </div>
@@ -62,13 +62,13 @@ const Footer = () => {
           <h4 class="text-lg font-semibold mb-6 text-white">Information</h4>
           <ul class="space-y-4">
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">About Us</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">About Us:- From the moment we met, we knew our baby boy was our greatest blessing.</a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Terms &amp; Conditions</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Terms &amp; Conditions:- “All growth starts at the end of your comfort zone.”</a>
             </li>
             <li>
-              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a>
+              <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Privacy Policy:- Only Family</a>
             </li>
           </ul>
         </div>

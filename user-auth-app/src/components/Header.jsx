@@ -25,7 +25,7 @@ navigate("/login")
         <div className='flex flex-wrap items-center gap-5 w-full'>
           <Link to={'/'}><img width={"90px"} height={"90px"} src={image} className='w-35' />
           </Link>
-          <h1 className='text-3xl center' >Tanishq</h1>
+          <h1 className='text-3xl center' >TANISHQ</h1>
 
           <div id="collapseMenu"
             style={{ display: menu ? "block" : "none" }}
