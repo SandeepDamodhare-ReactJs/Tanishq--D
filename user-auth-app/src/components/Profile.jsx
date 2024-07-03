@@ -9,7 +9,7 @@ const Profile = () => {
     }
 
     useEffect(()=> {
-axios.get("https://server-7bk0.onrender.com/profile")
+axios.get("http://localhost:8080/user/login")
 .then((res)=> {
     console.log("res", res)
 })

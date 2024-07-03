@@ -78,13 +78,13 @@ navigate("/login")
                   LogOut
                 </li>
               :   <Link to={"/login"}>
-                <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-red-500'>
+                <li className='max-lg:border-b max-lg:py-3 px-3 border-2  border-green-500 bg-green-500 cursor-pointer text-white rounded-full '>
                   Login
                 </li>
               </Link>}
 
           {!isAuth &&     <Link to={"/register"}>
-                <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-red-500'>
+                <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-yellow-500 bg-yellow-500 cursor-pointer text-white rounded-full'>
                   Register
                 </li>
               </Link> }

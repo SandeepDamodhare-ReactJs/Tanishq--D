@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +13,7 @@ export const Register = () => {
   };
 
   const handleRegister = () => {
-    axios.post("http://localhost:8080/user/signup", formData)
+    axios.post("https://tanishqmylove-1.onrender.com/user/signup", formData)
       .then((res) => {
         if (res.data) {
           // Navigate to login page after successful registration

@@ -1,17 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-// App.jsx
 import React from 'react';
-
 import {Register} from "./components/Register"
 import {Login} from './components/Login';
 import Home from './components/Home';
@@ -21,7 +8,6 @@ import Blog from './components/Blog';
 import About from './components/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './components/Profile';

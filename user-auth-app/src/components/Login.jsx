@@ -14,7 +14,7 @@ export const Login = () => {
 
  
   const handleLogin = () => {
-    axios.post("http://localhost:8080/user/login", formData)
+    axios.post("https://tanishqmylove-1.onrender.com/user/login", formData)
       .then((res) => {
         if (res.data) {
           alert("Login success");
