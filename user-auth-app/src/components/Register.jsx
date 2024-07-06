@@ -11,8 +11,9 @@ export const Register = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+  // https://tanishqmylove-1.onrender.com
   const handleRegister = () => {
+    // axios.post("http://localhost:8080/user/signup", formData)
     axios.post("https://tanishqmylove-1.onrender.com/user/signup", formData)
       .then((res) => {
         if (res.data) {
@@ -29,8 +30,12 @@ export const Register = () => {
 
   return (
     <>
-      <div>
-        <form className="space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto mt-10 py-10">
+      <div className='login_bg'>
+        <form className="bg-transparent border-2 border-red-600 mx-10 py-10 px-10 rounded-sm space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto mt-10 py-10">
+
+        <center><h1 className='text-3xl center' ><b>Sign Up</b></h1></center>
+
+
           <div className="relative flex items-center">
             <input
               type="text"

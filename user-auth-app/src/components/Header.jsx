@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import image from "../assets/diamond.jpeg"
 import { Link, useNavigate } from 'react-router-dom'
 import img from '../assets/diamond.jpeg'
+import { AuthContext } from './AuthContext'
+import '../App.css'
+
 const Header = () => {
   const [menu, setIsMenuOpen] = useState(false);
 const navigate = useNavigate()
@@ -9,7 +12,7 @@ const navigate = useNavigate()
     setIsMenuOpen(!menu)
    
   }
-
+const {name} = useContext(AuthContext)
 const isAuth = localStorage.getItem("token")
 const handlLogout = () => {
   localStorage.clear()
@@ -17,16 +20,22 @@ const handlLogout = () => {
   window.location.reload()
 navigate("/login")
 }
+
+let username = localStorage.getItem("name")
+
+
+
+
   return (
     <>
+<div className='top-header-area'>
 
-
-      <header className='flex border-b py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[0px] tracking-wide relative z-50'>
+      <header className='top-header-area flex border-b py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[0px] tracking-wide relative z-50'>
         <div className='flex flex-wrap items-center gap-5 w-full'>
           <Link to={'/'}><img width={"90px"} height={"90px"} src={image} className='w-35' />
           </Link>
           <h1 className='text-3xl center' >TANISHQ</h1>
-
+          <p>Welcome To The Lovely World <span style={{color: "red"}}>{username}</span></p>
           <div id="collapseMenu"
             style={{ display: menu ? "block" : "none" }}
             className='max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
@@ -73,6 +82,7 @@ navigate("/login")
                 className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>About</a>
               </li>
               </Link>
+
             {isAuth ? 
                 <li onClick={handlLogout} className='max-lg:border-b max-lg:py-3 px-3 border-2 border-red-500 bg-red-500 cursor-pointer text-white rounded-full ' >
                   LogOut
@@ -83,12 +93,13 @@ navigate("/login")
                 </li>
               </Link>}
 
+           {/* <p>{ username}</p> */}
+{/* 
           {!isAuth &&     <Link to={"/register"}>
                 <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-yellow-500 bg-yellow-500 cursor-pointer text-white rounded-full'>
                   Register
                 </li>
-              </Link> }
-
+              </Link> } */}
 
             </ul>
           </div>
@@ -102,20 +113,13 @@ navigate("/login")
           </button>
 
           <div className='flex lg:ml-auto max-lg:w-full'>
-            <div
-              className='flex xl:w-80 max-xl:w-full bg-gray-100 px-6 py-3 rounded outline outline-transparent focus-within:outline-[#007bff] focus-within:bg-transparent'>
-              <input type='text' placeholder='Search something...'
-                className='w-full text-sm bg-transparent rounded outline-none pr-2' />
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
-                className="cursor-pointer fill-gray-400">
-                <path
-                  d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z">
-                </path>
-              </svg>
+
+
             </div>
           </div>
-        </div>
+        
       </header>
+      </div>
 
 
 
