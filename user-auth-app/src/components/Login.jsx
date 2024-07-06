@@ -1,36 +1,34 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../App.css'
-import toast from 'react-hot-toast';
+import '../App.css';
 import { AuthContext } from './AuthContext';
 
 export const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const data = useContext(AuthContext)
+  const data = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if (name === 'email') {
+      setFormData({ ...formData, email: value });
+    }
   };
 
-  // https://tanishqmylove-1.onrender.com
   const handleLogin = () => {
-    // axios.post("http://localhost:8080/user/login", formData)
     axios.post("https://tanishqmylove-1.onrender.com/user/login", formData)
       .then((res) => {
         if (res.data) {
           alert("Login success");
-          console.log(res.data.token);
-          console.log("User", res.data);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("name", res.data.name);
-          data.handleName(res.data.name)
+          localStorage.setItem("email", res.data.email);
+          data.handleName(res.data.name);
+          data.handleEmail(res.data.email);
           navigate('/');
-        
-
         } else {
           setError('Login failed: ' + res.data.msg);
         }
@@ -38,18 +36,13 @@ export const Login = () => {
       .catch((err) => {
         setError('Error during login: ' + err.message);
       });
-
-    console.log(formData);
   };
-console.log("contextData", data);
+
   return (
     <div className='login_bg'>
-
-      <form className="bg-transparent border-2 border-red-600 mx-10 py-10 px-10 rounded-sm  space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto mt-10 py-10">
-    
-      <center><h1 className='text-3xl center' ><b>Login</b></h1></center>
+      <form className="bg-transparent border-2 border-red-600 mx-10 py-10 px-10 rounded-sm space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto mt-10 py-10">
+        <center><h1 className='text-3xl'><b>Login</b></h1></center>
         <div className="relative flex items-center">
-        
           <input
             type="email"
             name="email"
@@ -99,17 +92,14 @@ console.log("contextData", data);
         </button>
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
-
-      <center><Link to={"/register"}>
-                <li className='max-lg:border-b max-lg:py-3 px-3 border-2  border-green-500 bg-green-500 cursor-pointer text-white rounded-full '>
-                  Don't Have An Account..? SignUp Here....!!
-                </li>
-              </Link></center>
-
-      
-
-              </form>
-
+        <center>
+          <Link to={"/register"}>
+            <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-green-500 bg-green-500 cursor-pointer text-white rounded-full'>
+              Don't Have An Account..? SignUp Here....!!
+            </li>
+          </Link>
+        </center>
+      </form>
     </div>
   );
 };

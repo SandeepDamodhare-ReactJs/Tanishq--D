@@ -8,8 +8,20 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name,email, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+
+
+
+
+
+
+    setFormData({ ...formData, [email]: value });
+
+
+
+    
   };
   // https://tanishqmylove-1.onrender.com
   const handleRegister = () => {
