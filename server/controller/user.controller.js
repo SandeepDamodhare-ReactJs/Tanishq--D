@@ -7,12 +7,11 @@ const secretKey = 'helloworld';
 
 const userRegister = async (req, res) => {
     try {
-        const { name, mobile,address, about, email, password } = req.body;
+        const { name, mobile, address, about, email, password } = req.body;
 
         // Check if the user already exists
-        const userfindData = await UserModel.find({ email });
-        console.log(userfindData);
-        if (userfindData.length>=0) {
+        const userfindData = await UserModel.findOne({ email });
+        if (userfindData) {
             return res.status(400).json({ msg: "User already registered" });
         }
 
@@ -20,7 +19,7 @@ const userRegister = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user with the hashed password
-        const newUser = new UserModel({ name, mobile,address, about, email, password: hashedPassword });
+        const newUser = new UserModel({ name, mobile, address, about, email, password: hashedPassword });
 
         // Save the user to the database
         await newUser.save();
@@ -49,9 +48,9 @@ const userLogin = async (req, res) => {
 
         // Generate a JWT token
         const token = jwt.sign({ userId: findData._id }, secretKey, { expiresIn: '1h' });
-const {name} = findData
-        res.status(200).json({ msg: "User login success", token,name,mobile,address, about,email});
-        console.log(token);
+        const { name, mobile, address, about } = findData;
+
+        res.status(200).json({ msg: "User login success", token, name, mobile, address, about, email });
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ msg: "Server error" });

@@ -1,56 +1,39 @@
-
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [name, setName] = useState("")
-
-
-  const [mobile, setMobile] = useState("")
-  const [address, setAddress] = useState("")
-  const [about, setAbout] = useState("")
-
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    address: '',
+    about: '',
+  });
 
   const handleName = (name) => {
-    console.log("contextsidename", name);
-    setName(name)
-  }
+    setUser((prev) => ({ ...prev, name }));
+  };
+
+  const handleEmail = (email) => {
+    setUser((prev) => ({ ...prev, email }));
+  };
+
   const handleMobile = (mobile) => {
-    console.log("contextsidemobile", mobile);
-    setMobile(mobile)
-  }
+    setUser((prev) => ({ ...prev, mobile }));
+  };
+
   const handleAddress = (address) => {
-    console.log("contextsideaddress", address);
-    setAddress(address)
-  }
+    setUser((prev) => ({ ...prev, address }));
+  };
+
   const handleAbout = (about) => {
-    console.log("contextsideabout", about);
-    setAbout(about)
-  }
- 
-  const login = () => {
-    setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true');
+    setUser((prev) => ({ ...prev, about }));
   };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated');
-  };
-
-  useEffect(() => {
-    const storedAuth = localStorage.getItem('isAuthenticated');
-    if (storedAuth === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout,handleName,handleMobile,handleAddress,handleAbout,name,mobile,address,about  }}>
+    <AuthContext.Provider value={{ user, handleName, handleEmail, handleMobile, handleAddress, handleAbout }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
