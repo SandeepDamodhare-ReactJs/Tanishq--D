@@ -11,8 +11,8 @@ export const Login = () => {
   const data = useContext(AuthContext);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, mobile,address, about,  value } = e.target;
+    setFormData({ ...formData, [name]: value, [mobile]: value, [address]: value, [about]: value });
     if (name === 'email') {
       setFormData({ ...formData, email: value });
     }
@@ -25,8 +25,14 @@ export const Login = () => {
           alert("Login success");
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("name", res.data.name);
+          localStorage.setItem("mobile", res.data.name);
+          localStorage.setItem("address", res.data.name);
+          localStorage.setItem("about", res.data.name);
           localStorage.setItem("email", res.data.email);
           data.handleName(res.data.name);
+          data.handleName(res.data.mobile);
+          data.handleName(res.data.address);
+          data.handleName(res.data.about);
           data.handleEmail(res.data.email);
           navigate('/');
         } else {

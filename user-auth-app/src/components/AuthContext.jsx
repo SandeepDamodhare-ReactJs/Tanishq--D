@@ -8,9 +8,26 @@ export const AuthProvider = ({ children }) => {
   const [name, setName] = useState("")
 
 
+  const [mobile, setMobile] = useState("")
+  const [address, setAddress] = useState("")
+  const [about, setAbout] = useState("")
+
+
   const handleName = (name) => {
     console.log("contextsidename", name);
     setName(name)
+  }
+  const handleMobile = (mobile) => {
+    console.log("contextsidemobile", mobile);
+    setMobile(mobile)
+  }
+  const handleAddress = (address) => {
+    console.log("contextsideaddress", address);
+    setAddress(address)
+  }
+  const handleAbout = (about) => {
+    console.log("contextsideabout", about);
+    setAbout(about)
   }
  
   const login = () => {
@@ -31,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout,handleName,name  }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout,handleName,handleMobile,handleAddress,handleAbout,name,mobile,address,about  }}>
       {children}
     </AuthContext.Provider>
   );
