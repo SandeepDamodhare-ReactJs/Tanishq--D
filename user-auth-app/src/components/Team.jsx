@@ -7,33 +7,33 @@ const Team = () => {
   return (
     <>
 
-<div>
-     
-<div style={{margin:"auto", border:"1px solid blue", display:'flex', gap:'10px' }}>
+      <div>
 
-    <div>
-    <div style={{width:"100%", background:"Green"}}>
-    <marquee>My Hero!</marquee>
-    </div>
-    <img width={"500px"} height={"400px"} src={image} alt="" />
-    </div>
+        <div className='flex justify-between' >
 
-   <div>
-    <div style={{width:"100%", background:"Red"}}>
-    <marquee>My Love!</marquee>
-    </div>
-    <img width={"500px"} height={"400px"} src={image1} alt="" />
-    </div>
-   
+          <div>
+            <div >
+              <marquee>My Hero!</marquee>
+            </div>
+            <img width={"500px"} height={"400px"} src={image} alt="" />
+          </div>
 
-    <div>
-    <div style={{width:"100%", background:"Blue"}}>
-    <marquee>My Son!</marquee>
-    </div>
-    <img width={"500px"} height={"400px"} src={image3} alt="" />
-    </div>
-    </div>
-    </div>
+          <div>
+            <div >
+              <marquee>My Love!</marquee>
+            </div>
+            <img width={"500px"} height={"400px"} src={image1} alt="" />
+          </div>
+
+
+          <div>
+            <div >
+              <marquee>My Son!</marquee>
+            </div>
+            <img width={"500px"} height={"400px"} src={image3} alt="" />
+          </div>
+        </div>
+      </div>
 
     </>
 

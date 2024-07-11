@@ -1,10 +1,43 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px; /* Optional: Adds some space between images */
-  justify-items: center; 
+
+.main{
+  display: flex;
+
+}
+.form-container{
+  width: 70%;
 }
 
+.info-container{
+  width: 30%;
+  background-color: rgb(226, 141, 43);
+}
+.info-container table {
+  border-collapse: collapse;
+}
+
+.info-container table td {
+  padding: 40px;
+  border: 1px solid rgb(28, 148, 48);
+}
+
+.info-container table td:first-child {
+  font-weight: bold;
+}
+
+.info-container p span {
+  color: red;
+}
+
+.image-container img {
+  width: 100vw;
+  height: 100vh;
+}
+
+.top-header-area {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(156, 168, 223);
+}
 
 .login_bg {
   position: relative;
@@ -12,22 +45,6 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.login-form {
-  background: rgba(202, 141, 141, 0.8);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- 
-}
-
-
-.top-header-area {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgb(178, 180, 36);
 }

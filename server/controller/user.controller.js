@@ -2,28 +2,28 @@ const { UserModel } = require("../model/user.model");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-// Secret key for JWT
+
 const secretKey = 'helloworld';
 
 const userRegister = async (req, res) => {
     try {
-        const { name, mobile, address, about, email, password } = req.body;
+        const { name, mobile, address, about, email, password,image } = req.body;
 
-        // Check if the user already exists
+     
         const userfindData = await UserModel.findOne({ email });
         if (userfindData) {
-            return res.status(400).json({ msg: "User already registered" });
+            return res.status(200).json({ msg: "User already registered", success:false });
         }
 
-        // Hash the password
+
         const hashedPassword = await bcrypt.hash(password, 10);
+        
+ 
+        const newUser = new UserModel({ name, mobile, address, about, email,password: hashedPassword });
 
-        // Create a new user with the hashed password
-        const newUser = new UserModel({ name, mobile, address, about, email, password: hashedPassword });
 
-        // Save the user to the database
-        await newUser.save();
-        res.status(201).json({ msg: "User registered successfully" });
+       const user =  await newUser.save();
+        res.status(201).json({ msg: "User registered successfully", success:true, user });
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ msg: "Server error" });
@@ -34,19 +34,19 @@ const userLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Find the user by email
+    
         const findData = await UserModel.findOne({ email });
         if (!findData) {
             return res.status(400).json({ msg: "User not registered" });
         }
 
-        // Compare the provided password with the stored hashed password
+       
         const isMatch = await bcrypt.compare(password, findData.password);
         if (!isMatch) {
             return res.status(400).json({ msg: "Invalid credentials" });
         }
 
-        // Generate a JWT token
+    
         const token = jwt.sign({ userId: findData._id }, secretKey, { expiresIn: '1h' });
         const { name, mobile, address, about } = findData;
 
@@ -57,7 +57,65 @@ const userLogin = async (req, res) => {
     }
 };
 
+
+const getUserData = async(req,res) => {
+
+     const {email} = req.body
+   
+     try {
+      const users = await UserModel.findOne({email})  
+      if(users){
+         
+       res.status(200).json({msg:"user found", users, success:true})
+      }else{
+        res.status(200).json({msg:"user not found", success:false})
+      }
+     } catch (error) {
+     console.log(error);   
+     }
+     
+}
+
+
+const userUpdate = async (req, res) => {
+const userData = req.body
+     const {UserId} = req.params
+console.log("userId", UserId);
+    try {
+   await UserModel.findByIdAndUpdate({_id:UserId}, userData)    
+   res.status(200).json({msg:"user update success!!", success:true})
+    } catch (error) {
+      console.log(error);
+    }
+};
+
+
+const userDelete = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+     
+        const findData = await UserModel.findOne({ email });
+
+        if (!findData) {
+            return res.status(404).json({ msg: "User not found" });
+        }
+
+        
+        await findData.deleteOne();
+
+        res.status(200).json({ msg: "User deleted successfully" });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: "Server error" });
+    }
+};
+
+
 module.exports = {
+    getUserData,
     userRegister,
-    userLogin
+    userLogin,
+    userUpdate,
+    userDelete
 };

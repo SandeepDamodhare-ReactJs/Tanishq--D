@@ -22,16 +22,18 @@ const Header = () => {
   };
 
   let username = localStorage.getItem("name");
-  let email = localStorage.getItem("email");
 
   return (
     <>
       <div className='top-header-area'>
         <header className='top-header-area flex border-b py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[0px] tracking-wide relative z-50'>
-          <div className='flex flex-wrap items-center gap-5 w-full'>
+          <div className='flex flex-wrap items-center w-full'>
             <Link to={'/'}><img width={"90px"} height={"90px"} src={image} className='w-35' alt="Logo" /></Link>
-            <h1 className='text-3xl center'>TANISHQ</h1>
-            <p>Welcome To The Lovely World <span style={{ color: "red" }}>{username} {email}</span></p>
+              <h1 className='text-3xl center'>TANISHQ</h1>
+            <div style={{ display: username ? "block" : "none" }}>
+
+              <p style={{ marginLeft: "10px" }}>Welcome  <span style={{ color: "red", }}>{username}</span></p>
+            </div>
             <div id="collapseMenu"
               style={{ display: menu ? "block" : "none" }}
               className='max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
@@ -47,34 +49,39 @@ const Header = () => {
                 </li>
                 <Link to={'/'}>
                   <li className='max-lg:border-b max-lg:py-3 px-3'>
-                    <span className='lg:hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]'>Home</span>
+                    <span className='lg:hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]  white-text'>Home</span>
+                  </li>
+                </Link>
+                <Link to={'/edit'}>
+                  <li className='max-lg:border-b max-lg:py-3 px-3'>
+                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]  white-text'>Update</span>
                   </li>
                 </Link>
                 <Link to={'/team'}>
                   <li className='max-lg:border-b max-lg:py-3 px-3'>
-                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Team</span>
+                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]  white-text'>Team</span>
                   </li>
                 </Link>
                 <Link to={'/feature'}>
                   <li className='max-lg:border-b max-lg:py-3 px-3'>
-                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Feature</span>
+                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]  white-text'>Feature</span>
                   </li>
                 </Link>
                 <Link to={'/blog'}>
                   <li className='max-lg:border-b max-lg:py-3 px-3'>
-                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>Blog</span>
+                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]  white-text'>Blog</span>
                   </li>
                 </Link>
                 <Link to={'/about'}>
                   <li className='max-lg:border-b max-lg:py-3 px-3'>
-                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]'>About</span>
+                    <span className='lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]  white-text'>About</span>
                   </li>
                 </Link>
-                {isAuth ? 
+                {isAuth ?
                   <li onClick={handleLogout} className='max-lg:border-b max-lg:py-3 px-3 border-2 border-red-500 bg-red-500 cursor-pointer text-white rounded-full'>
                     LogOut
                   </li>
-                : <Link to={"/login"}>
+                  : <Link to={"/login"}>
                     <li className='max-lg:border-b max-lg:py-3 px-3 border-2 border-green-500 bg-green-500 cursor-pointer text-white rounded-full'>
                       Login
                     </li>
@@ -82,7 +89,7 @@ const Header = () => {
                 }
               </ul>
             </div>
-            <button id="toggleOpen" onClick={handleClick} style={{ display: !menu ? "block" : "none" }} className='lg:hidden ml-auto'>
+            <button id="toggleOpen" onClick={handleClick} style={{ display: !menu ? "hidden" : "none" }} className='lg:hidden ml-auto'>
               <svg className="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path>
               </svg>

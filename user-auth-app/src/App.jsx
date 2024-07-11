@@ -11,6 +11,9 @@ import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './components/Profile';
+import Update from './components/Update';
+import Image from './components/Image';
+
 
 const App = () => {
   return (
@@ -19,12 +22,13 @@ const App = () => {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/image" element={<Image />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} /> */}
           <Route path="/team" element={<PrivateRoute><Team/></PrivateRoute>} />
           <Route path="/feature" element={<PrivateRoute><Feature /></PrivateRoute>} />
           <Route path="/blog" element={<PrivateRoute><Blog /></PrivateRoute>} />
           <Route path="/about" element={<PrivateRoute><About /></PrivateRoute>} />
+          <Route path="/edit" element={<PrivateRoute><Update /></PrivateRoute>} />
           <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>} />
         </Routes>
         <Footer />

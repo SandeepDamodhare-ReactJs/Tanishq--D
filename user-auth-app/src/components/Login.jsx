@@ -5,6 +5,7 @@ import '../App.css';
 import { AuthContext } from './AuthContext';
 
 export const Login = () => {
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -16,8 +17,11 @@ export const Login = () => {
   };
 
   const handleLogin = () => {
+    setLoading(true)
     axios.post("https://tanishqmylove-1.onrender.com/user/login", formData)
+    
       .then((res) => {
+        
         if (res.data) {
           alert("Login success");
           localStorage.setItem("token", res.data.token);
@@ -34,23 +38,25 @@ export const Login = () => {
           navigate('/');
         } else {
           setError('Login failed: ' + res.data.msg);
+          setLoading(false)
         }
       })
       .catch((err) => {
         setError('Error during login: ' + err.message);
+        setLoading(false)
       });
   };
 
   return (
     <div className='login_bg'>
-      <form className="bg-transparent border-2 border-red-600 mx-10 py-10 px-10 rounded-sm space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto mt-10 py-10">
-        <center><h1 className='text-3xl'><b>Login</b></h1></center>
+      <form className="bg-transparent border-2 border-red-600 mx-10 py-10 px-10 rounded-sm space-y-4 font-[sans-serif] text-[#333] max-w-md mx-auto  py-10">
+        <h1 className='text-3xl' style={{display: "flex", justifyContent: "center", color: "yellow"}}><b>Login</b></h1>
         <div className="relative flex items-center">
           <input
             type="email"
             name="email"
             placeholder="Enter Email"
-            className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all"
+            className="px-4 py-3 bg-[#f0f1f2] text-white text-1xl font-bold focus:bg-transparent w-full text-sm border outline-[#007bff] rounded transition-all"
             onChange={handleChange}
             value={formData.email}
           />
@@ -91,7 +97,7 @@ export const Login = () => {
           className="px-6 py-2.5 w-full !mt-8 text-sm bg-[#007bff] hover:bg-blue-600 text-white rounded active:bg-[#006bff]"
           onClick={handleLogin}
         >
-          Submit
+          {loading ? "Please wait..." : "submit"}
         </button>
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
