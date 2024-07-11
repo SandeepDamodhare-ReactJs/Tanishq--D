@@ -29,7 +29,7 @@ setLoading(true)
       const response = await axios.post(baseUrl + "/user/signup", formData);
       console.log("response : ", response);
       if (response.data.success) {
-        setLoading(false)
+  
         navigate('/login');
       } else {
         setError('Registration failed: ' + response.data.msg);
