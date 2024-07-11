@@ -33,7 +33,7 @@ const Update = () => {
         const fetchData = async () => {
             console.log("email", storedEmail);
             try {
-                const response = await axios.post('http://localhost:8080/user/single', { email: storedEmail }); // Replace with your API endpoint
+                const response = await axios.post('https://tanishqmylove-1.onrender.com/user/single', { email: storedEmail }); // Replace with your API endpoint
             if(response){
                 console.log("res", response.data);
                 setFormData(response.data.users)
@@ -66,7 +66,7 @@ let newFormData = {...formData, image}
 // console.log("new update form data", newFormData);
 
         try {
-            const response = await axios.patch(`http://localhost:8080/user/edit/${formData._id}`, newFormData);
+            const response = await axios.patch(`https://tanishqmylove-1.onrender.com/user/edit/${formData._id}`, newFormData);
             if (response.data.success) {
                 alert(response.data.msg)
                 navigate('/')

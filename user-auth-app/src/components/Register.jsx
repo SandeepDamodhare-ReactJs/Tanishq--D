@@ -12,8 +12,7 @@ export const Register = () => {
     address: "",
     about: "",
     email: "",
-    password: "",
-    image:""
+    password: ""
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();

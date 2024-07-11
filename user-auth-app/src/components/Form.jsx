@@ -25,7 +25,7 @@ const Form = () => {
   const fetchData = async () => {
 
     try {
-      const response = await axios.post('http://localhost:8080/user/single', { email: storeEmail }); // Replace with your API endpoint
+      const response = await axios.post('https://tanishqmylove-1.onrender.com/user/single', { email: storeEmail }); // Replace with your API endpoint
       if (response) {
         console.log("res", response.data);
         setFormData(response.data.users)
