@@ -166,7 +166,7 @@ let newFormData = {...formData, image}
                         onComplete={files => setImage(files.map(x => x.fileUrl).join("\n"))}>
                         {({ onClick }) =>
                             <button onClick={onClick}>
-                                Upload a file...
+                                Upload Your Photo...
                             </button>
                         }
                     </UploadButton>
@@ -185,7 +185,7 @@ let newFormData = {...formData, image}
 
                     <div className="col-span-2 flex items-center justify-center sm:justify-start">
                         <button type="submit" onClick={handleDelete} className="inline-flex items-center px-10 py-2.5 text-sm bg-[red] text-white rounded-full hover:bg-[#0056b3] focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:ring-opacity-50">
-                            Delete
+                            Delete Account
                         </button>
                     </div></div>
             </div>

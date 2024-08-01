@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
-  // const baseUrl = "https://tanishqmylove-1.onrender.com";
-  const baseUrl = "http://localhost:8080";
+  const baseUrl = "https://tanishqmylove-1.onrender.com";
+  // const baseUrl = "http://localhost:8080";
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",

@@ -13,6 +13,7 @@ const About = () => {
 
 <div>
      
+     
 <div style={{margin:"auto", border:"1px solid blue", display:'flex', gap:'10px' }}>
 
     <div>
